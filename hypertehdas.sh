@@ -17,11 +17,21 @@ file_name="$file_name_input.html"
 function css_function ()
 {
   	echo ""
-	echo "Do you want to add LINK CSS?(y/n) (styles.css)"
+	echo "Do you want to add LINK CSS?(y/n)"
 	read css_answer
 	
 	if [[ $css_answer == "y" ]]; then
-		echo "<link rel=\"stylesheet\" href=\"styles.css\">" >> $file_name
+		echo "How many CSS files do you add?"
+		read css_amount
+		declare -i conter=0
+		while [[ $counter -lt $css_amount ]]
+		do
+		echo "$css_amount"
+		echo "Name of the $(($counter+1)). CSS file's name: "
+		read css_name
+		echo "<link rel=\"stylesheet\" href=\"$css_name.css\">" >> $file_name
+		counter=$(($counter+1))
+		done
 	fi
 	
 }
