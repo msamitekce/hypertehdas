@@ -4,9 +4,17 @@ declare file_name=""
 
 # WELCOME MESSAGE
 
-echo "***Welcome to HTLM Navigator Script***"
+echo " _   _                      _____    _         _"
+echo "| | | |_   _ _ __   ___ _ _|_   _|__| |__   __| | __ _ ___ "
+echo "| |_| | | | | '_ \ / _ \ '__|| |/ _ \ '_ \ / _\` |/ _\` / __|"
+echo "|  _  | |_| | |_) |  __/ |   | |  __/ | | | (_| | (_| \__ \\"
+echo "|_| |_|\__, | .__/ \___|_|   |_|\___|_| |_|\_,__|\__,_|___/"
+echo "       |___/|_|                                            "
 echo ""
-echo "Enter a file name to create"
+echo "_____Sami_Tekce__________________github.com/msamitekce_____"
+echo ""
+echo ""
+echo "- Enter a name to create a .html file:"
 read file_name_input
 
 file_name="$file_name_input.html"
@@ -17,17 +25,17 @@ file_name="$file_name_input.html"
 function css_function ()
 {
   	echo ""
-	echo "Do you want to add LINK CSS?(y/n)"
+	echo "## Do you want to add LINK CSS?(y/n)"
 	read css_answer
 	
 	if [[ $css_answer == "y" ]]; then
-		echo "How many CSS files do you add?"
+		echo ""
+		echo "-- How many CSS files do you want to add?"
 		read css_amount
 		declare -i conter=0
 		while [[ $counter -lt $css_amount ]]
 		do
-		echo "$css_amount"
-		echo "Name of the $(($counter+1)). CSS file's name: "
+		echo "--- Name of the $(($counter+1)). CSS file: "
 		read css_name
 		echo "<link rel=\"stylesheet\" href=\"$css_name.css\">" >> $file_name
 		counter=$(($counter+1))
@@ -42,35 +50,35 @@ function meta_function ()
 {
 
 	echo ""
-	echo "Do you want to add META KEYWORDS?(y/n)"
+	echo "## Do you want to add META KEYWORDS?(y/n)"
 	read meta_keywords_answer
 	
 	if [[ $meta_keywords_answer == "y" ]]; then
 		echo ""
-		echo "Write your META KEYWORDS (Seperate by comma (,)):"
+		echo "--- Write your META KEYWORDS (Seperate by comma (,)):"
 		read meta_keywords_description
 		echo "<meta name=\"keywords\" content=\"$meta_keywords_description\">" >> $file_name
 	fi
 
 	
 	echo ""
-	echo "Do you want to add META DESCRIPTION?(y/n)"
+	echo "## Do you want to add META DESCRIPTION?(y/n)"
 	read meta_description_answer
 	
 	if [[ $meta_description_answer == "y" ]]; then
 		echo ""
-		echo "Write your META DESCRIPTION:"
+		echo "--- Write your META DESCRIPTION:"
 		read meta_description_description
 		echo "<meta name=\"description\" content=\"$meta_description_description\">" >> $file_name
 	fi
 
 	echo ""
-	echo "Do you want to add META AUTHOR?(y/n)"
+	echo "## Do you want to add META AUTHOR?(y/n)"
 	read meta_author_answer
 	
 	if [[ $meta_author_answer == "y" ]]; then
 		echo ""
-		echo "Write your META AUTHOR:"
+		echo "--- Write your META AUTHOR:"
 		read meta_author_description
 		echo "<meta name=\"author\" content=\"$meta_author_description\">" >> $file_name
 	fi
@@ -82,13 +90,15 @@ function head_function ()
 {	
 	echo "<head>" >> $file_name
 	echo "<meta charset=\"utf-8\">" >> $file_name
-	
-	echo "Title of the page:"
+
+	echo ""
+	echo "---- Title of the page:"
 	read site_title
 	
 	echo "<title>$site_title</title>" >> $file_name	
 	
-	echo "Do you want to add META TAGS?(y/n)"
+	echo ""
+	echo "## Do you want to add META TAGS?(y/n)"
 	read meta_answer
 
 	if [[ $meta_answer == "y" ]]; then
@@ -107,19 +117,19 @@ function head_function ()
 
 function html ()
 {	
-	echo "Creting file..."
 	echo "<html>" >> $file_name
-  
-	echo "Do you want to edit HEAD now?(y/n)"
+  	echo ""
+	echo "## Do you want to edit HEAD now?(y/n)"
 	read head_answer
 
 	if [ $head_answer == "y" ]; then
 		head_function
 	fi
-
+	echo "<body></body>" >> $file_name
 	echo "</html>" >> $file_name
 }
 
 html
-
-echo "Ready to go"
+echo ""
+echo ""
+echo "=== Ready to go $file_name ==="
